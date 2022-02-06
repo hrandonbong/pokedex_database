@@ -1,0 +1,61 @@
+/* ALL PAGES */
+/* Standard WebPage Body Layout */
+body {
+    font-family: 'Courier New', monospace;
+    text-align:center;
+    background-color:#34495E;
+    color:#DAF7A6;
+    margin: 0% 0% 10% 0%;
+}
+
+/* Standard Heading */
+ h1 {
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+}
+
+/* Navigation Menu */
+.topnav {
+    width: 75%;
+    background-color: #000;
+    overflow: auto;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+}
+
+/* Navigation Links */
+.topnav a {
+    float: left;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    width: 25%;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Background color on Mouse-over */
+.topnav a:hover {
+    background-color: #555;
+}
+
+/* Current/Active Link */
+.topnav a.active {
+    background-color: #FF7F50;
+}
+
+/* Add media responsiveness */
+@media screen and (max-width: 500px) {
+    .topnav a {
+        float: none;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+
+
