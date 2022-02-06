@@ -3,7 +3,7 @@ var express = require('express');
 
 // Define Express App
 var app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 6107;
 
 // Server Static Assets
 app.use(express.static('public'));
