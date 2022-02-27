@@ -1,0 +1,34 @@
+<head>
+    <link href="styles.css" rel="stylesheet">
+    <title>Pokedex</title>
+</head>
+<body>
+    <h1>
+        Pokedex Database
+    </h1>
+    
+    <div class="topnav">
+        <a href="#index" onclick="document.location='index.handlebars'">Index</a>
+        <a class="active" href="#pokedex" onclick="document.location='pokedex.handlebars'">Pokedex</a>
+        <a href="#pokemon" onclick="document.location='pokemon.handlebars'">Pokemon</a>
+        <a href="#region" onclick="document.location='regions.handlebars'">Region</a>
+        <a href="#trainer" onclick="document.location='trainer.handlebars'">Trainer</a>
+    </div>
+    <br>
+    <h4>
+        Displays all the data collected across all pokedexes and allows you  to search data on the pokedex of a specific trainer
+    </h4>
+    <br>
+    <form>
+        <label for="trainer_id">Trainer ID:</label><br>
+        <input type="text" id="trainer_id" name="trainer_id"  placeholder="Input the ID of a trainer"><br><br>
+        <input type="submit" value="Submit">
+    </form> 
+
+    <br><br>
+
+    <form>
+        <legend>Pokedex Data</legend>
+        <input type="submit" value="Delete">
+    </form>
+</body>

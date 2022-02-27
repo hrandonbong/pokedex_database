@@ -4,19 +4,20 @@ module.exports = function() {
 
     //Display all regions in our database
     function getRegion(res, mysql, context, complete){
-        mysql.pool.query("SELECT Region_ID, Name as id, name from Region", function(error, results, fields){
+        mysql.pool.query("SELECT Region_ID AS id, Name as name FROM Region", function(error, results, fields){
             if (error){
                 res.write(JSON.stringify(error));
                 res.end();
             }
+            console.log(results);
             context.region = results;
             complete();
         });
     }
 
     // Post method for inserting new regions
-    router.post('/region', function(req, res){
-        console.log(req.body.homeworld)
+    router.post('/', function(req, res){
+        console.log(req.body.name)
         console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Region (Name) VALUES (?)";
@@ -27,7 +28,7 @@ module.exports = function() {
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.redirect('/region');
+                res.render('region',results);
             }
         });
     });
@@ -52,18 +53,17 @@ module.exports = function() {
     });
 
     /*Display all Regions. Requires web based javascript to delete users with AJAX*/
-    router.get('/region', function(req, res){
-        var callbackCount = 0;
+    router.get('/', function(req, res){
+        var callBackCount = 0;
         var context = {};
-        context.jsscripts = ["delete.js"];
+        // context.jsscripts = ["delete.js"];
         var mysql = req.app.get('mysql');
         getRegion(res, mysql, context, complete);
         function complete(){
-            callbackCount++;
-            if(callbackCount >= 2){
+            callBackCount++;
+            if(callBackCount >= 1){
                 res.render('region', context);
             }
-
         }
     });
 

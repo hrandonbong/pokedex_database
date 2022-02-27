@@ -1,0 +1,29 @@
+<head>
+    {{!-- {{#each css}}
+        <link rel="stylesheet" href="/css/styles.css">
+    {{/each}} --}}
+    {{!-- <link rel="stylesheet" type="text/css" href="/css/styles.css"> --}}
+    <title>Pokemon</title>
+</head>
+<h1>
+    Search your favorite pokemon and see recorded data about it!
+</h1>
+<div class="topnav">
+    <a class="active" href="#index" onclick="document.location='index.handlebars'">Index</a>
+    <a href="#pokedex" onclick="document.location='pokedex.handlebars'">Pokedex</a>
+    <a href="#pokemon" onclick="document.location='pokemon.handlebars'">Pokemon</a>
+    <a href="#region" onclick="document.location='regions.handlebars'">Region</a>
+    <a href="#trainer" onclick="document.location='trainer.handlebars'">Trainer</a>
+</div>
+<br>
+<h4>
+    Search your favorite pokemon!
+</h4>
+<br>
+<div>
+    <input type="text" placeholder="Input a name of a pokemon">
+</div>
+<br>
+<div>
+    <input type="submit" value="Submit">
+</div>

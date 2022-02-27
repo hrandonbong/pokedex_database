@@ -1,50 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link href="styles.css" rel="stylesheet">
-        <title>Pokedex</title>
-    </head>
-    <body>
-        <h1>
-            Region
-        </h1>
-        <div class="topnav">
-            <a href="#index" onclick="document.location='index.html'">Index</a>
-            <a href="#pokedex" onclick="document.location='pokedex.html'">Pokedex</a>
-            <a href="#pokemon" onclick="document.location='pokemon.html'">Pokemon</a>
-            <a class="active" href="#region" onclick="document.location='region.handlebars'">Region</a>
-            <a href="#trainer" onclick="document.location='trainer.html'">Trainer</a>
-        </div>
-        <br>
-        <h4>
-            Add new regions to our map
-        </h4>
+<head>
+    <script src="/public/js/region.js"></script>
+    <title>Pokedex</title>
+</head>
+<body>
+    <h1>
+        Region
+    </h1>
+    <div class="topnav">
+        <a href="#index" onclick="document.location='index.handlebars'">Index</a>
+        <a href="#pokedex" onclick="document.location='pokedex.handlebars'">Pokedex</a>
+        <a href="#pokemon" onclick="document.location='pokemon.handlebars'">Pokemon</a>
+        <a class="active" href="#region" onclick="document.location='regions.handlebars'">Region</a>
+        <a href="#trainer" onclick="document.location='trainer.handlebars'">Trainer</a>
+    </div>
+    <br>
+    <h4>
+        Add new regions to our map
+    </h4>
 
-        <br>
-        <form id='addRegion' action="/region" method="post">
-            <label for="region_id">Region ID:</label><br>
-            <input type="text" id="region_id" name="region_id"><br><br>
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name"><br><br>
-            <input type="submit" value="Submit">
-        </form> 
+    <br>
+    <form id='addRegion' method="post">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        <input type="submit" value="Submit">
+    </form> 
 
-        <h4>Current Regions:</h4>
-        <table>
-            <thead> 
-                <th>Region ID</th> 
-                <th>Name</th> 
-            </thead> 
-            <tbody>
-                {{#each region}} 
-                <tr> 
-                    <td>{{Region_ID}}</td> 
-                    <td>{{name}}</td> 
-                    <td><button onclick="deleteRegion({{id}})">Delete</button></td>
-                    <td><a href="/region/{{id}}">Update</a></td>
-                </tr> 
-                {{/each}} 
-            </tbody> 
-        </table> 
-    </body>
-</html>
+    <h4>Current Regions:</h4>
+    <table>
+        <thead> 
+            <th>Region ID</th> 
+            <th>Name</th> 
+        </thead> 
+        <tbody>
+            {{#each region}} 
+            <tr> 
+                <td>{{id}}</td> 
+                <td>{{name}}</td> 
+                <td><button onclick="deleteRegion({{id}})">Delete</button></td>
+                <td><a href="/query/region/{{id}}">Update</a></td>
+            </tr> 
+            {{/each}} 
+        </tbody> 
+    </table> 
+</body>
