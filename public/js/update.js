@@ -4,7 +4,7 @@ function updateRegion(id){
         type: 'PUT',
         data: $('#update-region').serialize(),
         success: function(result){
-            window.location.replace(".");
+            window.location.href = "/regions.handlebars";
             // window.location.reload(true);
         }
     })
