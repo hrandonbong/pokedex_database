@@ -16,7 +16,7 @@ app.use(express.static('public'));
 // app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'handlebars');
 app.set('mysql', mysql);
-
+app.use('/', express.static('public'))
 app.get('/',function(req,res){
     res.render('index') //We can omit the .handlebars extension as we do below
   });
@@ -45,7 +45,7 @@ app.get('/trainer.handlebars',function(req,res){
 app.use('/regions.handlebars', require('./public/js/region.js'));
 // app.use('/pokedex', require('./pokedex.js'));
 // app.use('/planets', require('./planets.js'));
-app.use('/', express.static('public'));
+;
 
 app.use(function(req,res){
     res.status(404);
@@ -61,37 +61,3 @@ app.use(function(err, req, res, next){
 app.listen(port, () => {
     console.log('Server connected at http://localhost:' + port);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Set up Routes
-//app.get('/', function(req, res) {
-    //res.sendFile(path.join(__dirname,'index.html'));
-////});
-
-//app.get('/favorite', function(req, res) {
-   // res.sendFile(path.join(__dirname, 'favorite.html'));
-//});
-
-
-
-
-
-
-
-
-

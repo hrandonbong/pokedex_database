@@ -4,12 +4,11 @@ module.exports = function() {
 
     //Display all regions in our database
     function getRegion(res, mysql, context, complete){
-        mysql.pool.query("SELECT Region_ID AS id, Name as name FROM Region", function(error, results, fields){
+        mysql.pool.query("SELECT Region_ID as id, Name as name FROM Region", function(error, results, fields){
             if (error){
                 res.write(JSON.stringify(error));
                 res.end();
             }
-            console.log(results);
             context.region = results;
             complete();
         });
@@ -17,18 +16,18 @@ module.exports = function() {
 
     // Post method for inserting new regions
     router.post('/', function(req, res){
-        console.log(req.body.name)
-        console.log(req.body)
+        // console.log(req.body.name)
+        // console.log(req.body)
         var mysql = req.app.get('mysql');
         var sql = "INSERT INTO Region (Name) VALUES (?)";
-        var inserts = [req.body.name];
+        var inserts = req.body.name;
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(JSON.stringify(error))
                 res.write(JSON.stringify(error));
                 res.end();
             }else{
-                res.render('region',results);
+                res.redirect('regions.handlebars');
             }
         });
     });
@@ -54,16 +53,13 @@ module.exports = function() {
 
     /*Display all Regions. Requires web based javascript to delete users with AJAX*/
     router.get('/', function(req, res){
-        var callBackCount = 0;
+        console.log('hello');
         var context = {};
-        // context.jsscripts = ["delete.js"];
+        context.jsscripts = ["delete.js"];
         var mysql = req.app.get('mysql');
         getRegion(res, mysql, context, complete);
         function complete(){
-            callBackCount++;
-            if(callBackCount >= 1){
-                res.render('region', context);
-            }
+            res.render('regions.handlebars', context);
         }
     });
 
@@ -82,7 +78,7 @@ module.exports = function() {
                 res.status(202).end();
             }
         })
-    })
+    });
 
     return router;
-}
+}();

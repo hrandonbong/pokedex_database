@@ -1,5 +1,5 @@
 <head>
-    <script src="/public/js/region.js"></script>
+    {{!-- <script src="/js/region.js"></script> --}}
     <title>Pokedex</title>
 </head>
 <body>
@@ -37,7 +37,7 @@
                 <td>{{id}}</td> 
                 <td>{{name}}</td> 
                 <td><button onclick="deleteRegion({{id}})">Delete</button></td>
-                <td><a href="/query/region/{{id}}">Update</a></td>
+                <td><a href="/region/{{id}}">Update</a></td>
             </tr> 
             {{/each}} 
         </tbody> 
