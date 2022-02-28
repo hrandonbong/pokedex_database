@@ -1,5 +1,6 @@
 <head>
-    {{!-- <script src="/js/region.js"></script> --}}
+    <script src="/js/delete.js"></script>
+    {{!-- <script src="/js/update.js"></script> --}}
     <title>Pokedex</title>
 </head>
 <body>
@@ -19,27 +20,34 @@
     </h4>
 
     <br>
-    <form id='addRegion' method="post">
+
+    <div>
+        <form id='addRegion' method="post">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name"><br><br>
         <input type="submit" value="Submit">
-    </form> 
+        </form> 
+    </div>
+    
+    <br><br>
 
-    <h4>Current Regions:</h4>
-    <table>
-        <thead> 
-            <th>Region ID</th> 
-            <th>Name</th> 
-        </thead> 
-        <tbody>
-            {{#each region}} 
-            <tr> 
-                <td>{{id}}</td> 
-                <td>{{name}}</td> 
-                <td><button onclick="deleteRegion({{id}})">Delete</button></td>
-                <td><a href="/region/{{id}}">Update</a></td>
-            </tr> 
-            {{/each}} 
-        </tbody> 
-    </table> 
+    <div>
+        <table class="table">
+            <caption>Current Regions:</caption>
+            <thead> 
+                <th>Region ID</th>
+                <th>Name</th> 
+            </thead> 
+            <tbody>
+                {{#each region}} 
+                <tr> 
+                    <td>{{id}}</td> 
+                    <td>{{name}}</td> 
+                    <td><button id="delete" onclick="deleteRegion({{id}})">Delete</button></td>
+                    <td><a href="/regions.handlebars/{{id}}">Update</a></td>
+                </tr> 
+                {{/each}} 
+            </tbody> 
+        </table> 
+    </div>
 </body>

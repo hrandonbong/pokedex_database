@@ -1,0 +1,12 @@
+<html>
+<script src="/js/update.js"></script>
+<h1>Update {{region.name}}:</h1>
+<form id="update-region" method="post">
+    Region ID: <input type="text" name="id" value="{{region.id}}"></input>
+    Region Name: <input type="text" name="name" value="{{region.name}}"><br>
+</form>
+<br><br>
+<button type="button" onclick="javascript:history.back()">Cancel</button>
+<br><br>
+<button onclick="updateRegion({{region.id}})">Update</button>
+</html>

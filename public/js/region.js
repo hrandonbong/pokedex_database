@@ -4,7 +4,7 @@ module.exports = function() {
 
     //Display all regions in our database
     function getRegion(res, mysql, context, complete){
-        mysql.pool.query("SELECT Region_ID as id, Name as name FROM Region", function(error, results, fields){
+        mysql.pool.query("SELECT Region_ID as id, Name as name FROM Region ORDER BY id ASC", function(error, results, fields){
             if (error){
                 res.write(JSON.stringify(error));
                 res.end();
@@ -14,6 +14,20 @@ module.exports = function() {
         });
     }
 
+    //Get a specific region
+    function getSpecificRegion(res, mysql, context, id, complete){
+        var sql = "SELECT Region_ID as id, Name as name FROM Region WHERE Region_ID = ?";
+        var inserts = [id];
+        mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            context.region = results[0];
+            complete();
+        });
+    }
+    
     // Post method for inserting new regions
     router.post('/', function(req, res){
         // console.log(req.body.name)
@@ -32,13 +46,25 @@ module.exports = function() {
         });
     });
 
+    //Used for loading our update form
+    router.get('/:id', function(req, res){
+        var context = {};
+        var mysql = req.app.get('mysql');
+        console.log("Outputting update page ID")
+        console.log(req.params.id);
+        getSpecificRegion(res, mysql, context, req.params.id, complete);
+        function complete(){
+            res.render('updateRegions.handlebars', context);
+            
+
+        }
+    });
+
     //Updates a region
     router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
-        console.log(req.body)
-        console.log(req.params.id)
-        var sql = "UPDATE Region SET Region_ID = :region_idInput, Name = :name_idInput WHERE Region_ID= :region_ID_from_the_update_form";
-        var inserts = [req.body.Region_ID, req.body.Name];
+        var sql = "UPDATE Region SET Name = ? WHERE Region_ID = ?";
+        var inserts = [req.body.name, req.body.id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(error)
@@ -53,7 +79,6 @@ module.exports = function() {
 
     /*Display all Regions. Requires web based javascript to delete users with AJAX*/
     router.get('/', function(req, res){
-        console.log('hello');
         var context = {};
         context.jsscripts = ["delete.js"];
         var mysql = req.app.get('mysql');
