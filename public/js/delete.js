@@ -7,3 +7,13 @@ function deleteRegion(id){
         }
     })
 };
+
+function deleteTrainer(id){
+    $.ajax({
+        url: '/trainer.handlebars/' + id,
+        type: 'DELETE',
+        success: function(result){
+            window.location.reload(true);
+        }
+    })
+};

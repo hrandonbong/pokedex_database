@@ -19,11 +19,9 @@
         Add a new trainer to the adventure!
     </h4>
     <br>
-    <form>
+    <form id="addTrainer" method="post">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name"><br><br>
-        <label for="pokedex_id">Pokedex ID:</label><br>
-        <input type="text" id="pokedex_id" name="pokedex_id"><br><br>
         <label for="region_id">Region ID:</label><br>
         <input type="text" id="region_id" name="region_id"><br><br>
         <input type="submit" value="Submit">
@@ -33,8 +31,25 @@
         Remove a trainer from the adventure
     </h4>
 
-    <form>
-        <legend>Trainer Data</legend>
-        <input type="submit" value="Delete">
-    </form>
+    <div>
+        <table class="table">
+            <caption>Current Trainers:</caption>
+            <thead> 
+                <th>Trainer ID</th>
+                <th>Name</th> 
+                <th>Region ID</th>
+            </thead> 
+            <tbody>
+                {{#each trainer}} 
+                <tr> 
+                    <td>{{tid}}</td> 
+                    <td>{{name}}</td> 
+                    <td>{{rid}}</td> 
+                    <td><button id="delete" onclick="deleteTrainer({{tid}})">Delete</button></td>
+                    <td><a href="/trainer.handlebars/{{tid}}">Update</a></td>
+                </tr> 
+                {{/each}} 
+            </tbody> 
+        </table> 
+    </div>
 </body>

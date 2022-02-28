@@ -18,6 +18,7 @@ app.set('view engine', 'handlebars');
 app.set('mysql', mysql);
 app.use('/', express.static('public'));
 app.use('/regions.handlebars', require('./public/js/region.js'));
+app.use('/trainer.handlebars', require('./public/js/trainer.js'));
 
 app.get('/',function(req,res){
     res.render('index') //We can omit the .handlebars extension as we do below
@@ -39,9 +40,9 @@ app.get('/regions.handlebars',function(req,res){
     res.render('regions.handlebars') //We can omit the .handlebars extension as we do below
 });
 
-app.get('/trainer.handlebars',function(req,res){
-    res.render('trainer.handlebars') //We can omit the .handlebars extension as we do below
-});
+// app.get('/trainer.handlebars',function(req,res){
+//     res.render('trainer.handlebars') //We can omit the .handlebars extension as we do below
+// });
 
 // app.use('/pokedex', require('./pokedex.js'));
 // app.use('/planets', require('./planets.js'));

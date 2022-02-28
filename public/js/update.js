@@ -9,3 +9,14 @@ function updateRegion(id){
         }
     })
 };
+
+function updateTrainer(id){
+    $.ajax({
+        url: '/trainer.handlebars/' + id,
+        type: 'PUT',
+        data: $('#update-trainer').serialize(),
+        success: function(result){
+            window.location.href = "/trainer.handlebars";
+        }
+    })
+};

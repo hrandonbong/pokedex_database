@@ -1,0 +1,13 @@
+<html>
+<script src="/js/update.js"></script>
+<h1>Update {{trainer.name}}:</h1>
+<form id="update-trainer" method="post">
+    Trainer ID: <input type="text" name="tid" value="{{trainer.tid}}"></input><br>
+    Trainer Name: <input type="text" name="name" value="{{trainer.name}}"><br>
+    Region ID: <input type="text" name="rid" value="{{trainer.rid}}"></input>
+</form>
+<br><br>
+<button type="button" onclick="javascript:history.back()">Cancel</button>
+<br><br>
+<button onclick="updateTrainer({{trainer.tid}})">Update</button>
+</html>
