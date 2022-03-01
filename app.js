@@ -21,6 +21,7 @@ app.use('/regions.handlebars', require('./public/js/region.js'));
 app.use('/trainer.handlebars', require('./public/js/trainer.js'));
 app.use('/pokedex.handlebars', require('./public/js/pokedex.js'));
 app.use('/pokemon.handlebars',require('./public/js/pokemon.js'));
+app.use('/pokedex_pokemon.handlebars',require('./public/js/pokedex_pokemon.js'));
 app.get('/',function(req,res){
     res.render('index') //We can omit the .handlebars extension as we do below
   });

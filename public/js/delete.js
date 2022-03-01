@@ -37,3 +37,13 @@ function deletePokemon(id){
         }
     })
 };
+
+function deletePokedexPokemon(id){
+    $.ajax({
+        url: '/Pokedex_pokemon.handlebars/' + id,
+        type: 'DELETE',
+        success: function(result){
+            window.location.reload(true);
+        }
+    })
+};

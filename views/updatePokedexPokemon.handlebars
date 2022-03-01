@@ -1,0 +1,12 @@
+<html>
+<script src="/js/update.js"></script>
+<h1>Update Pokedex Pokemon:</h1>
+<form id="update-pokedex_pokemon" method="post">
+    Pokedex ID: <input type="text" name="did" value="{{row.did}}"></input><br>
+    Pokemon ID: <input type="text" name="pid" value="{{row.pid}}"></input><br>
+</form>
+<br><br>
+<button type="button" onclick="javascript:history.back()">Cancel</button>
+<br><br>
+<button onclick="updatePokedexPokemon({{row.pid}})">Update</button>
+</html>

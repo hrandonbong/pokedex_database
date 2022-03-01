@@ -42,3 +42,14 @@ function updatePokemon(id){
         }
     })
 };
+
+function updatePokedexPokemon(id){
+    $.ajax({
+        url: '/pokedex_pokemon.handlebars/' + id,
+        type: 'PUT',
+        data: $('#update-pokedex_pokemon').serialize(),
+        success: function(result){
+            window.location.href = "/pokedex_pokemon.handlebars";
+        }
+    })
+};

@@ -1,0 +1,50 @@
+<head>
+    <script src="/js/delete.js"></script>
+    <title>Pokedex</title>
+</head>
+<body>
+    <h1>
+        Pokemon
+    </h1>
+    <div class="topnav">
+        <a onclick="document.location.href='/index.handlebars'">Index</a>
+        <a onclick="document.location.href='/pokedex.handlebars'">Pokedex</a>
+        <a onclick="document.location.href='/pokemon.handlebars'">Pokemon</a>
+        <a onclick="document.location.href='/regions.handlebars'">Region</a>
+        <a onclick="document.location.href='/trainer.handlebars'">Trainer</a>
+        <a class="active" onclick="document.location.href='/pokedex_pokemon.handlebars'">Pokedex Pokemon</a>
+    </div>
+
+    <br>
+    <h4>
+        Submit information about which pokedex recorded which pokemon
+    </h4>
+    <br>
+    <form id='addPokedexPokemon' method="post">
+        <label for="did">Pokedex:</label><br>
+        <input type="text" id="did" name="did"><br><br>
+        <label for="pid">Pokemon ID:</label><br>
+        <input type="text" id="pid" name="pid"><br><br>
+        <input type="submit" value="Submit">
+    </form> 
+    <br><br>
+     <div>
+        <table class="table">
+            <caption>Current Pokedex to Pokemon:</caption>
+            <thead> 
+                <th>Pokedex ID</th>
+                <th>Pokemon ID</th>
+            </thead> 
+            <tbody>
+                {{#each row}} 
+                <tr>
+                    <td>{{did}}</td> 
+                    <td>{{pid}}</td>
+                    <td><button id="delete" onclick="deletePokedexPokemon({{pid}})">Delete</button></td>
+                    <td><a href="/pokedex_pokemon.handlebars/{{pid}}">Update</a></td>
+                </tr> 
+                {{/each}} 
+            </tbody> 
+        </table> 
+    </div>
+</body>
