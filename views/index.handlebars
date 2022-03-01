@@ -1,13 +1,7 @@
 <head>
-    {{!-- {{#each css}}
-        <link rel="stylesheet" href="/css/styles.css">
-    {{/each}} --}}
-    {{!-- <link rel="stylesheet" type="text/css" href="/css/styles.css"> --}}
     <title>Pokemon</title>
 </head>
-<h1>
-    Search your favorite pokemon and see recorded data about it!
-</h1>
+<body>
 <div class="topnav">
     <a class="active" onclick="document.location.href='/index.handlebars'">Index</a>
     <a onclick="document.location.href='/pokedex.handlebars'">Pokedex</a>
@@ -22,9 +16,37 @@
 </h4>
 <br>
 <div>
-    <input type="text" placeholder="Input a name of a pokemon">
+    
+    <form id='getPokemon' method="post">
+        <label for="name">Pokemon Name:</label><br>
+        <input type="text" name="name" placeholder="Input a name of a pokemon">
+        <input type="submit" value="Submit">
+    </form> 
 </div>
-<br>
-<div>
-    <input type="submit" value="Submit">
-</div>
+<br><br>
+     <div>
+        <table class="table">
+            <caption>You selected {{pokemon.name}}:</caption>
+            <thead> 
+                <th>Pokemon ID</th>
+                <th>Name</th>
+                <th>Type</th> 
+                <th>Region ID</th>
+                <th>Pre-Evolutions</th>
+                <th>Pokedex ID</th>
+                <th>Recorded By</th>
+            </thead> 
+            <tbody>
+                <tr>
+                    <td>{{pokemon.pid}}</td>
+                    <td>{{pokemon.name}}</td> 
+                    <td>{{pokemon.type}}</td> 
+                    <td>{{pokemon.rid}}</td>
+                    <td>{{pokemon.preevo}}</td> 
+                    <td>{{pokemon.did}}</td>
+                    <td>{{pokemon.Trainer}}</td> 
+                </tr> 
+            </tbody> 
+        </table> 
+    </div>
+    </body>

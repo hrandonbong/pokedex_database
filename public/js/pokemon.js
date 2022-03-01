@@ -3,7 +3,7 @@ module.exports = function() {
     var router = express.Router();
 
     //Display all Pokedexes in our database
-    function getRegion(res, mysql, context, complete){
+    function getPokemon(res, mysql, context, complete){
         mysql.pool.query("SELECT ID_Tag as pid, Name as name, Type as type, Region_ID as rid, Pre_Evolution as preevo FROM Pokemon ORDER BY pid ASC", function(error, results, fields){
             if (error){
                 res.write(JSON.stringify(error));
@@ -102,7 +102,7 @@ module.exports = function() {
         var context = {};
         context.jsscripts = ["delete.js"];
         var mysql = req.app.get('mysql');
-        getRegion(res, mysql, context, complete);
+        getPokemon(res, mysql, context, complete);
         function complete(){
             res.render('pokemon.handlebars', context);
         }

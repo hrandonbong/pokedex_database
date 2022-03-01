@@ -17,18 +17,18 @@ app.use(express.static('public'));
 app.set('view engine', 'handlebars');
 app.set('mysql', mysql);
 app.use('/', express.static('public'));
+app.use('/',require('./public/js/index.js'));
+app.use('/index.handlebars',require('./public/js/index.js'));
 app.use('/regions.handlebars', require('./public/js/region.js'));
 app.use('/trainer.handlebars', require('./public/js/trainer.js'));
 app.use('/pokedex.handlebars', require('./public/js/pokedex.js'));
 app.use('/pokemon.handlebars',require('./public/js/pokemon.js'));
 app.use('/pokedex_pokemon.handlebars',require('./public/js/pokedex_pokemon.js'));
-app.get('/',function(req,res){
-    res.render('index') //We can omit the .handlebars extension as we do below
-  });
 
-app.get('/index.handlebars',function(req,res){
-    res.render('index.handlebars') //We can omit the .handlebars extension as we do below
-});
+
+// app.get('/',function(req,res){
+//     res.render('index.handlebars') //We can omit the .handlebars extension as we do below
+// });
 
 // app.get('/pokedex.handlebars',function(req,res){
 //     res.render('pokedex.handlebars') //We can omit the .handlebars extension as we do below
