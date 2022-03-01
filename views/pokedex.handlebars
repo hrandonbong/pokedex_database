@@ -1,5 +1,5 @@
 <head>
-    <link href="styles.css" rel="stylesheet">
+    <script src="/js/delete.js"></script>
     <title>Pokedex</title>
 </head>
 <body>
@@ -16,19 +16,34 @@
     </div>
     <br>
     <h4>
-        Displays all Pokedexes out in the world, and you can assign trainers to them
+        Build a pokedex by clicking that button!
     </h4>
     <br>
-    <form>
+    <form id='addPokedex' method="post">
         <label for="trainer_id">Trainer ID:</label><br>
         <input type="text" id="trainer_id" name="trainer_id"  placeholder="Input the ID of a trainer"><br><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Build">
     </form> 
 
     <br><br>
 
-    <form>
-        <legend>Pokedex Data</legend>
-        <input type="submit" value="Delete">
-    </form>
+    <div>
+        <table class="table">
+            <caption>Current Pokedexes:</caption>
+            <thead> 
+                <th>Pokedex ID</th>
+                <th>Trainer ID</th> 
+            </thead> 
+            <tbody>
+                {{#each pokedex}} 
+                <tr> 
+                    <td>{{pid}}</td> 
+                    <td>{{tid}}</td> 
+                    <td><button id="delete" onclick="deletePokedex({{pid}})">Delete</button></td>
+                    <td><a href="/pokedex.handlebars/{{pid}}">Update</a></td>
+                </tr> 
+                {{/each}} 
+            </tbody> 
+        </table> 
+    </div>
 </body>

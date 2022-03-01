@@ -1,0 +1,15 @@
+<html>
+<script src="/js/update.js"></script>
+<h1>Update Pokemon {{pokemon.name}}:</h1>
+<form id="update-pokemon" method="post">
+    Pokemon ID: <input type="text" name="pid" value="{{pokemon.pid}}"></input><br>
+    Pokemon Name: <input type="text" name="name" value="{{pokemon.name}}"></input><br>
+    Pokemon Type: <input type="text" name="type" value="{{pokemon.type}}"></input><br>
+    Region ID: <input type="text" name="rid" value="{{pokemon.rid}}"></input><br>
+    Pre-Evolution: <input type="text" name="preevo" value="{{pokemon.preevo}}"></input>
+</form>
+<br><br>
+<button type="button" onclick="javascript:history.back()">Cancel</button>
+<br><br>
+<button onclick="updatePokemon({{pokemon.pid}})">Update</button>
+</html>

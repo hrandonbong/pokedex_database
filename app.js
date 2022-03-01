@@ -19,7 +19,8 @@ app.set('mysql', mysql);
 app.use('/', express.static('public'));
 app.use('/regions.handlebars', require('./public/js/region.js'));
 app.use('/trainer.handlebars', require('./public/js/trainer.js'));
-
+app.use('/pokedex.handlebars', require('./public/js/pokedex.js'));
+app.use('/pokemon.handlebars',require('./public/js/pokemon.js'));
 app.get('/',function(req,res){
     res.render('index') //We can omit the .handlebars extension as we do below
   });
@@ -28,17 +29,17 @@ app.get('/index.handlebars',function(req,res){
     res.render('index.handlebars') //We can omit the .handlebars extension as we do below
 });
 
-app.get('/pokedex.handlebars',function(req,res){
-    res.render('pokedex.handlebars') //We can omit the .handlebars extension as we do below
-});
+// app.get('/pokedex.handlebars',function(req,res){
+//     res.render('pokedex.handlebars') //We can omit the .handlebars extension as we do below
+// });
 
-app.get('/pokemon.handlebars',function(req,res){
-    res.render('pokemon.handlebars') //We can omit the .handlebars extension as we do below
-});
+// app.get('/pokemon.handlebars',function(req,res){
+//     res.render('pokemon.handlebars') //We can omit the .handlebars extension as we do below
+// });
 
-app.get('/regions.handlebars',function(req,res){
-    res.render('regions.handlebars') //We can omit the .handlebars extension as we do below
-});
+// app.get('/regions.handlebars',function(req,res){
+//     res.render('regions.handlebars') //We can omit the .handlebars extension as we do below
+// });
 
 // app.get('/trainer.handlebars',function(req,res){
 //     res.render('trainer.handlebars') //We can omit the .handlebars extension as we do below

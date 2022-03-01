@@ -17,3 +17,23 @@ function deleteTrainer(id){
         }
     })
 };
+
+function deletePokedex(id){
+    $.ajax({
+        url: '/pokedex.handlebars/' + id,
+        type: 'DELETE',
+        success: function(result){
+            window.location.reload(true);
+        }
+    })
+};
+
+function deletePokemon(id){
+    $.ajax({
+        url: '/pokemon.handlebars/' + id,
+        type: 'DELETE',
+        success: function(result){
+            window.location.reload(true);
+        }
+    })
+};

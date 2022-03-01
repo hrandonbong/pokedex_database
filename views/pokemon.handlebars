@@ -1,5 +1,5 @@
 <head>
-    <link href="styles.css" rel="stylesheet">
+    <script src="/js/delete.js"></script>
     <title>Pokedex</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
         Submit information about a new pokemon that you have encountered
     </h4>
     <br>
-    <form id='addRegion' action="/region" method="post">
+    <form id='addPokemon' method="post">
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name"><br><br>
         <label for="type">Type:</label><br>
@@ -30,14 +30,30 @@
         <input type="text" id="preevolution" name="preevolution"><br><br>
         <input type="submit" value="Submit">
     </form> 
-
-    <br>
-    Delete any existing pokemon entries
-    <br>
-    <br>
-
-    <form>
-        <legend>Pokemon Data</legend>
-        <input type="submit" value="Delete">
-    </form>
+    <br><br>
+     <div>
+        <table class="table">
+            <caption>Current Pokemons:</caption>
+            <thead> 
+                <th>Pokemon ID</th>
+                <th>Name</th>
+                <th>Type</th> 
+                <th>Region ID</th>
+                <th>Pre-Evolutions</th>
+            </thead> 
+            <tbody>
+                {{#each pokemon}} 
+                <tr> 
+                    <td>{{pid}}</td>
+                    <td>{{name}}</td> 
+                    <td>{{type}}</td> 
+                    <td>{{rid}}</td>
+                    <td>{{preevo}}</td>  
+                    <td><button id="delete" onclick="deletePokemon({{pid}})">Delete</button></td>
+                    <td><a href="/pokemon.handlebars/{{pid}}">Update</a></td>
+                </tr> 
+                {{/each}} 
+            </tbody> 
+        </table> 
+    </div>
 </body>

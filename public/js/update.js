@@ -20,3 +20,25 @@ function updateTrainer(id){
         }
     })
 };
+
+function updatePokedex(id){
+    $.ajax({
+        url: '/pokedex.handlebars/' + id,
+        type: 'PUT',
+        data: $('#update-pokedex').serialize(),
+        success: function(result){
+            window.location.href = "/pokedex.handlebars";
+        }
+    })
+};
+
+function updatePokemon(id){
+    $.ajax({
+        url: '/pokemon.handlebars/' + id,
+        type: 'PUT',
+        data: $('#update-pokemon').serialize(),
+        success: function(result){
+            window.location.href = "/pokemon.handlebars";
+        }
+    })
+};
