@@ -1,5 +1,5 @@
 <head>
-    <script src="/js/delete.js"></script>
+    <script src="/js/delete.js"> </script>
     <title>Pokedex</title>
 </head>
 <body>
@@ -17,12 +17,18 @@
     </div>
     <br>
     <h4>
-        Build a pokedex by clicking that button!
+        Build a pokedex by clicking that button and select a trainer!
     </h4>
     <br>
     <form id='addPokedex' method="post">
         <label for="trainer_id">Trainer ID:</label><br>
-        <input type="text" id="trainer_id" name="trainer_id"  placeholder="Input the ID of a trainer"><br><br>
+        <select id="trainer_id" name="trainer_id">
+            {{#each pokedex}}
+            <option value={{tid}}>{{tid}}</option>
+            {{/each}}
+        </select>
+        {{!-- <input type="text" id="trainer_id" name="trainer_id"  placeholder="Input the ID of a trainer"> --}}
+        <br><br>
         <input type="submit" value="Build">
     </form> 
 
@@ -40,11 +46,24 @@
                 <tr> 
                     <td>{{pid}}</td> 
                     <td>{{tid}}</td> 
-                    <td><button id="delete" onclick="deletePokedex({{pid}})">Delete</button></td>
-                    <td><a href="/pokedex.handlebars/{{pid}}">Update</a></td>
+                    <td><button id="delete" onclick="deletePokedex({{pid}})" class="button">Delete</button></td>
+                    <td><a href="/pokedex.handlebars/{{pid}}" class="button">Update</a></td>
                 </tr> 
                 {{/each}} 
             </tbody> 
         </table> 
     </div>
 </body>
+
+<script>
+    $(document).ready(function () {
+        var usedNames = {};
+        $("select > option").each(function () {
+        if (usedNames[this.value]) {
+        $(this).remove();
+        } else {
+        usedNames[this.value] = this.text;
+        }
+        });
+    });
+</script>

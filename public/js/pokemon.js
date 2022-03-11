@@ -81,10 +81,12 @@ module.exports = function() {
     //Updates a Pokedex
     router.put('/:id', function(req, res){
         var mysql = req.app.get('mysql');
-        var sql = "UPDATE Pokemon SET Name = ?, Type = ?, Region_ID = ?, Pre_Evolution = ? WHERE ID_Tag = ?";
+        var sql = "UPDATE Pokemon SET ID_Tag = ?, Name = ?, Type = ?, Region_ID = ?, Pre_Evolution = ? WHERE ID_Tag = ?";
         console.log("Pokemon ID");
+        console.log(req.params.id);
+        console.log("ID change");
         console.log(req.body.pid);
-        var inserts = [req.body.name, req.body.type, req.body.rid, req.body.preevo, req.body.pid];
+        var inserts = [req.body.pid, req.body.name, req.body.type, req.body.rid, req.body.preevo, req.params.id];
         sql = mysql.pool.query(sql,inserts,function(error, results, fields){
             if(error){
                 console.log(error)
