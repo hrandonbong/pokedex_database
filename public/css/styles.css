@@ -59,15 +59,18 @@ th, td{
     padding: 8px;
 }
 
-/* Add media responsiveness */
-/* @media screen and (max-width: 500px) {
-    .topnav a {
-        float: none;
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-} */
+.button {
+    background-color: #d34343;
+    border: none;
+    color: white;
+    padding: 2px 3px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+  }
 
 
 
