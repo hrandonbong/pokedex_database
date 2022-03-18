@@ -14,6 +14,18 @@ module.exports = function() {
         });
     }
 
+    function getTrainer(res, mysql, context, complete){
+        mysql.pool.query("SELECT Trainer_ID as tid, Name as name, Region_ID as rid FROM Trainer ORDER BY tid ASC", function(error, results, fields){
+            if (error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }
+            //Change context.HERE to an object name of your choice
+            context.trainer = results;
+            complete();
+        });
+    }
+
     //Get a specific Pokedex
     function getSpecificPokedex(res, mysql, context, id, complete){
         var sql = "SELECT Pokedex_ID as pid, Trainer_ID as tid FROM Pokedex WHERE Pokedex_ID = ?";
@@ -81,12 +93,17 @@ module.exports = function() {
 
     /*Display all Pokedex. Requires web based javascript to delete users with AJAX*/
     router.get('/', function(req, res){
+        let count = 0
         var context = {};
         context.jsscripts = ["delete.js"];
         var mysql = req.app.get('mysql');
         getRegion(res, mysql, context, complete);
+        getTrainer(res, mysql, context, complete);
         function complete(){
-            res.render('pokedex.handlebars', context);
+            count++
+            if (count >= 2){
+                res.render('pokedex.handlebars', context);
+            }
         }
     });
 

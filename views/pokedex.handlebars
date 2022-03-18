@@ -23,7 +23,7 @@
     <form id='addPokedex' method="post">
         <label for="trainer_id">Trainer ID:</label><br>
         <select id="trainer_id" name="trainer_id">
-            {{#each pokedex}}
+            {{#each trainer}}
             <option value={{tid}}>{{tid}}</option>
             {{/each}}
         </select>
@@ -55,7 +55,7 @@
     </div>
 </body>
 
-<script>
+{{!-- <script>
     $(document).ready(function () {
         var usedNames = {};
         $("select > option").each(function () {
@@ -66,4 +66,4 @@
         }
         });
     });
-</script>
+</script> --}}

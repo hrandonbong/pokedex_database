@@ -88,19 +88,33 @@ module.exports = function() {
         }
     });
 
-    //Deleting Data from region
-    router.delete('/:id', function(req, res){
-        var mysql = req.app.get('mysql');
+    function deleteRegion(res, mysql, context, id, complete){
         var sql = "DELETE FROM Region WHERE Region_ID = ?";
-        var inserts = [req.params.id];
-        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+        var inserts = id;
+        mysql.pool.query(sql, inserts, function(error, results, fields){
             if(error){
                 console.log(error)
                 res.write(JSON.stringify(error));
                 res.status(400);
                 res.end();
             }else{
-                res.status(202).end();
+                complete();
+            }
+        });
+    }
+
+    //Deleting Data from region
+    router.delete('/:id', function(req, res){
+        var count = 0;
+        var mysql = req.app.get('mysql');
+        var id = req.params.id;
+        deleteRegion(res, mysql, context, id, complete)
+        sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+            if(count >= 0){
+                console.log(error)
+                res.write(JSON.stringify(error));
+                res.status(400);
+                res.end();
             }
         })
     });
